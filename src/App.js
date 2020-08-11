@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-// import Home from "./components/Home";
-// import Cart from "./components/Cart";
+import Home from "./components/home/Home";
+import Cart from "./components/cart/Cart";
 
 class App extends Component {
   render() {
@@ -11,8 +11,8 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            {/* <Route exact path="/" component={} />
-            <Route path="/cart" component={} /> */}
+            <Route exact path="/" component={Home} />
+            <Route path="/cart" component={Cart} />
           </Switch>
         </div>
       </BrowserRouter>
