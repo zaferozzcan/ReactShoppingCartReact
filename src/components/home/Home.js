@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class Home extends Component {
+  handleClick = (id) => {
+    this.props.addToCart(id);
+  };
+
   render() {
     // console.log(this.props);
 
@@ -13,8 +17,11 @@ class Home extends Component {
           <span
             to="/"
             className="btn-floating halfway-fab waves-effect waves-light red"
+            onClick={() => {
+              this.handleClick(item.id);
+            }}
           >
-            <i className="material-icons">+</i>
+            <i className="material-icons">add</i>
           </span>
         </div>
 
@@ -42,4 +49,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id) => {
+      dispatch(addToCart(id));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
