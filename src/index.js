@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import cartReducer from "./store/reducers/cartReducer";
 
 import App from "./App";
+const store = createStore(cartReducer);
 
-const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  rootElement
+  </Provider>,
+  document.getElementById("root")
 );

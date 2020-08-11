@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="nav-wrapper">
       <div className="container">
         <Link to="/" className="brand-logo">
-          Shopping
+          ShoppingByZafer
         </Link>
 
         <ul className="right hide-on-med-and-down">
