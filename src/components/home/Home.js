@@ -14,7 +14,7 @@ class Home extends Component {
             to="/"
             className="btn-floating halfway-fab waves-effect waves-light red"
           >
-            <i className="material-icons">add</i>
+            <i className="material-icons">+</i>
           </span>
         </div>
 
