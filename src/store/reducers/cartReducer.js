@@ -4,6 +4,8 @@ import Item3 from "../../images/item3.jpg";
 import Item4 from "../../images/item4.jpg";
 import Item5 from "../../images/item5.jpg";
 import Item6 from "../../images/item6.jpg";
+export const ADD_TO_CART = "ADD_TO_CART";
+
 const initialState = {
   items: [
     {
@@ -59,7 +61,29 @@ const initialState = {
   total: 0
 };
 
-function CartReducer(state = initialState, action) {
-  return state;
-}
-export default CartReducer;
+const cartReducer = (state = initialState, action) => {
+  if (action.type === ADD_TO_CART) {
+    let addedItem = state.items.find((item) => item.id === action.id);
+    //check if the action id exists in the addedItems
+    let existed_item = state.addedItems.find((item) => action.id === item.id);
+    if (existed_item) {
+      addedItem.quantity += 1;
+      return {
+        ...state,
+        total: state.total + addedItem.price
+      };
+    } else {
+      addedItem.quantity = 1;
+      let newTotal = state.total + addedItem.price;
+      return {
+        ...state,
+        addedItems: [...state.addedItems, addedItem],
+        total: newTotal
+      };
+    }
+  } else {
+    return state;
+  }
+};
+
+export default cartReducer;
